@@ -23,9 +23,9 @@ describe("Teacher Endpoints", () => {
     let body = res.body;
     expect(body.length).toEqual(3);
     body.forEach(element => {
-      expect(element).toHaveProperty('age');
-      expect(element).toHaveProperty('name');
       expect(element).toHaveProperty('id');
+      expect(element).toHaveProperty('name');
+      expect(element).toHaveProperty('age');
     });
 
     expect(body[0].name).toBe('Kusuma Ranasinghe');
