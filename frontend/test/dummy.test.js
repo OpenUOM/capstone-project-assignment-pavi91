@@ -1,5 +1,5 @@
 fixture`Dummy Test`
-    .page`https://devexpress.github.io/testcafe/example`;
+    .page`http://localhost:4200`;
 
 test('Dummy Test', async t => {
 });
