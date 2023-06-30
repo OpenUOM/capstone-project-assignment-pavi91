@@ -11,7 +11,7 @@ export class NavbarComponent implements OnInit {
   @Input()
   title: string;
 
-  constructor(  private router: Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
