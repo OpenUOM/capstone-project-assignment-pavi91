@@ -16,9 +16,7 @@ export class AppServiceService {
       this.ROOT_URL = 'api';
     }
   
-    if (!environment.production) {
-      this.ROOT_URL = 'http://localhost:8080';
-    }
+    
   }
 
   initializeDB(){
