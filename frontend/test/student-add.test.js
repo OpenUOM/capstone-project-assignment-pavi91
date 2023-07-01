@@ -1,10 +1,10 @@
 import { Selector } from 'testcafe';
 
 fixture`Testing Student UI`
-    .page`http://localhost:4200/student`;
+    .page`http://localhost:4200/addStudent`;
 
 test('Testing add students', async t => {
-    await t.navigateTo("/addStudent");
+    
     
     // Fill in the form fields and submit
     await t.typeText("#student-id", "999999");
@@ -22,7 +22,7 @@ test('Testing add students', async t => {
     let isStudentFound = false;
     for (let i = 0; i < rowCount; i++) {
         const tdText = await table.find('tr').nth(i).innerText;
-        if (tdText.includes("Supun Mihiranga")) {
+        if (tdText.includes("Pasindu Basnayaka")) {
             isStudentFound = true;
             break;
         }
