@@ -26,7 +26,7 @@ test('Testing edit students', async t => {
     const rowCount = await table.find('tr').count;
 
     let tdText = await table.find('tr').nth(rowCount - 1).innerText;
-    await t.expect(tdText).match(/^(?!.*Changed Student Name).*$/);
+    await t.expect(tdText).match(/^(?=.*Changed Student Name).*$/);
 
     await t.navigateTo("/student");
     await t.click("#student-delete-999999");
