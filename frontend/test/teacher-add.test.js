@@ -1,8 +1,8 @@
-import {Selector} from 'testcafe';
+import { Selector } from 'testcafe';
 process.env.NODE_ENV = "test";
 
 fixture`Testing Teacher UI`
-    .page`http://localhost:4200/teacher`
+    .page`http://localhost:4200/teacher`;
 
 test('Testing add teachers', async t => {
     await t.navigateTo("/dbinitialize");
@@ -15,9 +15,9 @@ test('Testing add teachers', async t => {
 
     await t.navigateTo("/teacher");
 
-    const table = Selector('#teacher-table')
+    const table = Selector('#teacher-table');
     const rowCount = await table.find('tr').count;
 
     let tdText = await table.find('tr').nth(rowCount - 1).innerText;
-    await t.expect(tdText).contains("Mohan Perera").ok;
+    await t.expect(tdText).contains("Mohan Perera");
 });
