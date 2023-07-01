@@ -2,6 +2,7 @@ import { Selector } from 'testcafe';
 
 fixture`Testing Student UI`
     .page`http://localhost:4200/addStudent`;
+    .quarantineMode();
 
 test('Testing add students', async t => {
     
