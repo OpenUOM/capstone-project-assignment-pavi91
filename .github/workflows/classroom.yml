@@ -13,15 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Set up Node.js
+      - name: Set up Node.js v16.14.2
         uses: actions/setup-node@v2
         with:
           node-version: '16.14.2'
-      - name: Install Dependencies
-        run: npm install
-      - name: Start Backend Server
-        run: npm start -- --configuration=test &
-      - name: Start Frontend Server
-        run: npm run start:ci
-      - name: Run Tests
-        run: npm test
+      - uses: education/autograding@v1
