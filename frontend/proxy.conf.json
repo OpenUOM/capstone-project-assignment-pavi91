@@ -2,13 +2,13 @@
     "/api/*" : {
         "target" : "http://localhost:8080",
         "pathRewrite" : {
-            "^/api" : ""
+            "^/api" : "http://localhost:4200"
         }
     },
     "/test/*" : {
-        "target" : "http://localhost:4200",
+        "target" : "http://localhost:3000",
         "pathRewrite" : {
-            "^/test" : ""
+            "^/test" : "http://localhost:4200"
         }
     }
 }

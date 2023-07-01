@@ -1,5 +1,4 @@
 export const environment = {
   production: true,
-  name: 'dev',
-  test: false
+  apiUrl: 'http://localhost:4200' // Update the port to 4200 or the desired port
 };

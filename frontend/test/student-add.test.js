@@ -5,7 +5,7 @@ fixture`Testing Student UI`
 
 test('Testing add students', async t => {
     
-    
+    await t.navigateTo("/addStudent");
     // Fill in the form fields and submit
     await t.typeText("#student-id", "999999");
     await t.typeText("#student-name", "Pasindu Basnayaka");
