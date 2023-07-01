@@ -2,13 +2,13 @@ import { Selector } from 'testcafe';
 process.env.NODE_ENV = "test";
 
 fixture`Testing Student UI`
-    .page`http://localhost:4200/student`
-    
+    .page`http://localhost:4200/student`;
 
 test('Testing add students', async t => {
+    await t.executeScript(() => {
+        window.location.href = 'http://localhost:4200/addStudent';
+    });
 
-
-    await t.navigateTo("http://localhost:4200/addStudent");
     await t.typeText("#student-id", "999999");
     await t.typeText("#student-name", "Pasindu Basnayaka");
     await t.typeText("#student-age", "45");
@@ -17,10 +17,9 @@ test('Testing add students', async t => {
 
     await t.navigateTo("/student");
 
-    const table = Selector('#student-table')
+    const table = Selector('#student-table');
     const rowCount = await table.find('tr').count;
 
     let tdText = await table.find('tr').nth(rowCount - 1).innerText;
     await t.expect(tdText).contains("Pasindu Basnayaka").ok;
-
 });
