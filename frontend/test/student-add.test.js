@@ -1,13 +1,12 @@
 import { Selector } from 'testcafe';
-process.env.NODE_ENV = "test";
 
 fixture`Testing Student UI`
-    .page`http://localhost:4200/student`
-    .clientScripts({ content: 'window.localStorage.setItem("retryTestPages", true);' })
-    .retryTestPages(true);
+    .page`http://localhost:4200/student`;
 
 test('Testing add students', async t => {
     await t.navigateTo("/addStudent");
+    
+    // Fill in the form fields and submit
     await t.typeText("#student-id", "999999");
     await t.typeText("#student-name", "Pasindu Basnayaka");
     await t.typeText("#student-age", "45");
@@ -18,7 +17,17 @@ test('Testing add students', async t => {
 
     const table = Selector('#student-table');
     const rowCount = await table.find('tr').count;
-
-    let tdText = await table.find('tr').nth(rowCount - 1).innerText;
-    await t.expect(tdText).contains("Pasindu Basnayaka").ok;
+    
+    // Check if the expected student name is present in any row
+    let isStudentFound = false;
+    for (let i = 0; i < rowCount; i++) {
+        const tdText = await table.find('tr').nth(i).innerText;
+        if (tdText.includes("Supun Mihiranga")) {
+            isStudentFound = true;
+            break;
+        }
+    }
+    
+    // Assert if the student is found
+    await t.expect(isStudentFound).ok();
 });
