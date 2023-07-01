@@ -1,9 +1,6 @@
 name: GitHub Classroom Workflow
 
-on:
-  push:
-    branches:
-      - main
+on: [push]
 
 permissions:
   checks: write
@@ -16,17 +13,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
-
-      - name: Install dependencies
+      - name: Install Dependencies
         run: npm install
-
-      - name: Start Angular development server
-        run: npm start -- --configuration=test
-
-      - name: Run tests
+      - name: Start Backend Server
+        run: npm start -- --configuration=test &
+      - name: Start Frontend Server
+        run: npm run start:ci
+      - name: Run Tests
         run: npm test
