@@ -3,9 +3,7 @@ process.env.NODE_ENV = "test";
 
 fixture`Testing Student UI`
     .page`http://localhost:4200/student`
-    .beforeEach(async t => {
-        await t.setPageLoadTimeout(60000); // Set the page load timeout to 60 seconds
-    });
+    
 
 test('Testing add students', async t => {
 
