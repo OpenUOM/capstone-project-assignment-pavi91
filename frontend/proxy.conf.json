@@ -6,7 +6,7 @@
         }
     },
     "/test/*" : {
-        "target" : "http://localhost:4200",
+        "target" : "http://localhost:3000",
         "pathRewrite" : {
             "^/test" : ""
         }
