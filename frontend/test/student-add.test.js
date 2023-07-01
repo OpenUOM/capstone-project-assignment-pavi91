@@ -1,7 +1,7 @@
 import { Selector } from 'testcafe';
 
 fixture`Testing Student UI`
-    .page`http://localhost:4200/addStudent`;
+    .page`https://devexpress.github.io/testcafe/example`;
 
 test('Testing add students', async t => {
     
