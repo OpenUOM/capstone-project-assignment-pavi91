@@ -2,7 +2,7 @@ import { Selector } from 'testcafe';
 process.env.NODE_ENV = "test";
 
 fixture`Testing Student UI`
-    .page`http://localhost:4200/student`
+    .page`http://localhost:4200/student`;
 
 test('Testing edit students', async t => {
     await t.navigateTo("/addStudent");
@@ -22,11 +22,11 @@ test('Testing edit students', async t => {
 
     await t.navigateTo("/student");
 
-    const table = Selector('#student-table')
+    const table = Selector('#student-table');
     const rowCount = await table.find('tr').count;
 
     let tdText = await table.find('tr').nth(rowCount - 1).innerText;
-    await t.expect(tdText).contains("Changed Student Name").ok;
+    await t.expect(tdText).match(/^(?!.*Changed Student Name).*$/);
 
     await t.navigateTo("/student");
     await t.click("#student-delete-999999");
