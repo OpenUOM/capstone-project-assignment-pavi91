@@ -1,8 +1,9 @@
-import {Selector} from 'testcafe';
+import { Selector } from 'testcafe';
 process.env.NODE_ENV = "test";
 
 fixture`Testing Teacher UI`
-    .page`http://localhost:4200/teacher`
+    .page`http://localhost:4200/teacher`;
+
 test('Testing edit teachers', async t => {
     await t.navigateTo("/teacher");
     await t.click("#teacher-edit-10003");
@@ -13,11 +14,11 @@ test('Testing edit teachers', async t => {
 
     await t.navigateTo("/teacher");
 
-    const table = Selector('#teacher-table')
+    const table = Selector('#teacher-table');
     const rowCount = await table.find('tr').count;
 
     let tdText = await table.find('tr').nth(rowCount - 1).innerText;
-    await t.expect(tdText).contains("Changed Teacher Name").ok;
-
+    await t.expect(tdText).includes("Changed Teacher Name");
+    
     await t.click("#teacher-delete-10003");
 });
